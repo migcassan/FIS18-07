@@ -1,5 +1,5 @@
 var server = require('./server');
-var port = (process.env.PORT || 3000);
+var port = (process.env.PORT || 4200);
 
 console.log("Starting API server...");
 
