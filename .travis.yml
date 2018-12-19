@@ -1,4 +1,4 @@
-sudo: required
+#sudo: required
 language: node_js
 node_js:
   - "9"
@@ -17,7 +17,7 @@ script:
    # build docker images
   - docker build -t contacts .
  
- deploy:
+deploy:
   provider: script
   skip_cleanup: true
   script:
