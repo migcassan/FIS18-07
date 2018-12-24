@@ -3,7 +3,8 @@ language: node_js
 node_js:
   - "9"
 services: 
-  - docker
+  - docker 
+  # - mongodb
 
 before_install: 
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
@@ -15,7 +16,7 @@ install:
 script: 
   - ng build --prod --aot
    # build docker images
-  - docker build -t contacts .
+  - docker build -t presupuesto .
  
 deploy:
   provider: script

@@ -1,16 +1,41 @@
+const PRESUPUESTOS_APP_DIR = '/dist/presupuesto';
 var express = require('express');
+var bodyParser = require('body-parser');
+var path = require('path');
+
 var BASE_API_PATH = "/api/v1";
+
 var app = express();
 
-app.get("/", (req, res) => {
-    res.send("<html><body><h1>My server</h1></body></html>");
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, PRESUPUESTOS_APP_DIR)));
+
+var presupuestos = [
+    { "nombre": "almuerzo director de sopra steria", "categoria": "dieta", "monto": "250" },
+    { "nombre": "almuerzo director de everis", "categoria": "dieta", "monto": "270" }
+]
+
+
+app.get("/", (req, res) => {    
+    console.log(Date() + " - GET /presupuestos");
+    res.sendFile(path.join(__dirname, PRESUPUESTOS_APP_DIR, '/index.html'));
 });
 
-app.get(BASE_API_PATH + "/contacts", (req, res) => {
+app.get(BASE_API_PATH + "/presupuestos", (req, res) => {
 
-    console.log(Date() + " - GET /contacts");
+    console.log(Date() + " - GET /presupuestos");
 
-    res.send(__dirname);
+    // res.send(__dirname);
+    res.send(presupuestos);
+});
+
+app.post(BASE_API_PATH + "/presupuestos", (req, res) => {
+
+    console.log(Date() + " - POST /presupuestos");
+
+    // res.send(__dirname);
+    presupuestos.push(req.body);
+    res.sendStatus(201);
 
 });
 

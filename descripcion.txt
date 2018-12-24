@@ -1,0 +1,40 @@
+request:
+GET /presupuestos
+
+response:
+200 OK 
+[  {"nombre":"almuerzo director de sopra steria","categoria":"dieta","monto":"250" },
+{"nombre":"almuerzo director de everis","categoria":"dieta","monto":"270" }  ]
+
+request:
+POST /presupuestos
+
+response:
+201 created 
+{"nombre":"almuerzo directora de santander","categoria":"dieta","monto":"220" } 
+
+request:
+DELETE /presupuestos
+
+response:
+200 OK  
+
+request:
+GET /presupuestos/{id}
+
+response:
+200 OK 
+{"nombre":"almuerzo director de sopra steria","categoria":"dieta","monto":"250" } 
+
+request:
+PUT /presupuestos/{id}
+{"nombre":"almuerzo director de sopra steria","categoria":"dieta","monto":"150" } 
+
+response:
+200 OK 
+
+request:
+DELETE /presupuestos/{id}
+
+response:
+200 OK  

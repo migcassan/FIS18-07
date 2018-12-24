@@ -1,4 +1,4 @@
-FROM node:9-alpine
+FROM node:10.14-stretch-slim
 
 
 WORKDIR /app
@@ -9,7 +9,8 @@ COPY package-lock.json .
 RUN npm install
 
 COPY index.js .
-COPY contacts.json .
+COPY server.js .
+# COPY presupuestos.js .
 COPY dist dist
 
 #RUN ng build --prod
