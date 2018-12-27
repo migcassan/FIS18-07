@@ -7,7 +7,13 @@ import { Component } from '@angular/core';
   // template: ''
 })
 export class AppComponent {
-  title = 'Presupuestos';
+  title = 'PRESUPUESTOS';
 
-  team = 'MC, FA & XL'
+  team = 'MC, FA & XL';
+
+  onLogin() {
+
+    alert("intento entrar");  
+
+   }
 }

@@ -19,6 +19,7 @@ var presupuestos = [
 app.get("/", (req, res) => {    
     console.log(Date() + " - GET /presupuestos");
     res.sendFile(path.join(__dirname, PRESUPUESTOS_APP_DIR, '/index.html'));
+    res.sendStatus(200);
 });
 
 app.get(BASE_API_PATH + "/presupuestos", (req, res) => {
@@ -27,6 +28,7 @@ app.get(BASE_API_PATH + "/presupuestos", (req, res) => {
 
     // res.send(__dirname);
     res.send(presupuestos);
+    res.sendStatus(200);
 });
 
 app.post(BASE_API_PATH + "/presupuestos", (req, res) => {
