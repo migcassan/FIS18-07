@@ -13,7 +13,7 @@ export class AppComponent {
 
   onLogin() {
 
-    alert("intento entrar");  
+    alert("cargando...");  
 
    }
 }
