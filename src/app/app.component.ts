@@ -11,4 +11,5 @@ export class AppComponent {
   title = 'PRESUPUESTOS';
 
   team = 'MC, FA & XL';
+
 }
