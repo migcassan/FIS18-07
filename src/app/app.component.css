@@ -1,7 +1,24 @@
-h1 {
+.title{
     background: #007bbf;
+    position: fixed !important;
     padding: 10xp;
+    right: 0;
+    left: 0;
     text-align: center;
+    top: 0;
     color: #fff;
     border-radius: 8px 8px 10px 10px;
   }  
+
+  .datos { 
+    background: #007bbf;
+    position: fixed !important;    
+    left: 0px;
+    bottom: 0px;
+    right: 0;
+    z-index: 10 !important;
+    color: whitesmoke;
+    margin-left: 0ch;
+    border-radius: 8px 8px 10px 10px;
+    padding: 5px;
+}

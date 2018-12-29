@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { presupuestos } from '../presupuestos';
 
 @Component({
-  // selector: 'app-main-menu',
+  selector: 'app-main-menu',
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.css']
 })
