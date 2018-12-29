@@ -7,13 +7,8 @@ import { Component } from '@angular/core';
   // template: ''
 })
 export class AppComponent {
+  
   title = 'PRESUPUESTOS';
 
   team = 'MC, FA & XL';
-
-  onLogin() {
-
-    alert("intento entrar");  
-
-   }
 }
