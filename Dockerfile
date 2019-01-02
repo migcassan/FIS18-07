@@ -8,8 +8,8 @@ COPY package-lock.json .
 
 RUN npm install
 
-COPY index.js .
-COPY server.js .
+COPY server/index.js .
+COPY server/server.js .
 # COPY presupuestos.js .
 COPY dist dist
 
