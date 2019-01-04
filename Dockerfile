@@ -8,9 +8,14 @@ COPY package-lock.json .
 
 RUN npm install
 
-COPY server/index.js .
-COPY server/server.js .
-# COPY presupuestos.js .
+COPY index.js .
+COPY server.js .
+COPY db.js .
+COPY presupuestoModel.js .
+COPY userModel.js .
+COPY indexRouter.js .
+COPY userCtrl.js .
+COPY presupuestoCtrl.js .
 COPY dist dist
 
 #RUN ng build --prod
