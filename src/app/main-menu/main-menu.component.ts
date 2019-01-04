@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { presupuestos } from '../presupuestos';
+
+import { presupuestos } from '../shared/presupuestos';
 
 @Component({
   selector: 'app-main-menu',
