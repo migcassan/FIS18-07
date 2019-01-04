@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-var dbURL = process.env.DB || "mongodb://localhost:27017/presupuestosTest";
+var dbURL = process.env.DB || "mongodb://localhost:27017/presupuestoTest";
 mongoose.connect(dbURL, { useCreateIndex: true, useNewUrlParser: true }, (err) => {
 
     if (!err) {

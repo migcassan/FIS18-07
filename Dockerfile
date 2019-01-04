@@ -11,8 +11,8 @@ RUN npm install
 COPY index.js .
 COPY server.js .
 COPY db.js .
-COPY presupuestos.js .
-COPY user.js .
+COPY presupuestoModel.js .
+COPY userModel.js .
 COPY indexRouter.js .
 COPY userCtrl.js .
 COPY presupuestoCtrl.js .

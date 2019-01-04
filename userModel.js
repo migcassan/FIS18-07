@@ -1,19 +1,32 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 var userSchema = new mongoose.Schema({
     name: {
         type: String,
-        unique: true
+        required: 'El nombre no puede estar vacío'
     },
     email: {
-        type: String
+        type: String,
+        required: 'El E-mail no puede estar vacío',
+        unique: true
     },
     password: {
-        type: String
+        type: String,
+        required: 'La clave no puede estar vacía',
+        minlength: [4, 'Debe contener al menos 4 caracteres']
     },
-    saltSecret: {
-        type: String
-    }
+    saltSecret: String
+});
+
+userSchema.pre('save', function (next) {
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(this.password, salt, (err, hash) => {
+            this.password = hash;
+            this.saltSecret = salt;
+            next();
+        });
+    });
 });
 
 userSchema.methods.cleanup = function () {
