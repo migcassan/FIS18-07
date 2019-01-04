@@ -13,5 +13,5 @@ mongoose.connect(dbURL, { useCreateIndex: true, useNewUrlParser: true }, (err) =
 
 module.exports = mongoose;
 
-require('./presupuestos');
-require('./user');
+require('./presupuestoModel');
+require('./userModel');
