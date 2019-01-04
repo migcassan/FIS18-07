@@ -9,11 +9,31 @@ import { LoginComponent } from './user/login/login.component';
 import { UserComponent } from './user/user.component';
 import { SignupComponent } from './user/signup/signup.component';
 
+// import { AuthGuard } from './auth/auth.guard';
+
+// const appRoutes: Routes = [
+//   { path: '', redirectTo: 'user', pathMatch: 'full' },
+//   { path: 'user', component: UserComponent },
+//   { path: 'login', component: LoginComponent },
+//   { path: 'login/main', redirectTo: 'main', pathMatch: 'full' },
+//   { path: 'main', component: MainMenuComponent }
+// ];
+
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'login/main', redirectTo: 'main', pathMatch: 'full' },
-  { path: 'main', component: MainMenuComponent }
+  {
+    path: 'signup', component: UserComponent,
+    children: [{ path: '', component: SignupComponent }]
+  },
+  {
+    path: 'login', component: UserComponent,
+    children: [{ path: '', component: LoginComponent }]
+  },
+  {
+    path: 'main', component: MainMenuComponent//, canActivate: [AuthGuard]
+  },
+  {
+    path: '', redirectTo: '/login', pathMatch: 'full'
+  }
 ];
 
 @NgModule({
