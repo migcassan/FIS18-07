@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LoginComponent } from './user/login/login.component';
@@ -10,14 +11,6 @@ import { UserComponent } from './user/user.component';
 import { SignupComponent } from './user/signup/signup.component';
 
 // import { AuthGuard } from './auth/auth.guard';
-
-// const appRoutes: Routes = [
-//   { path: '', redirectTo: 'user', pathMatch: 'full' },
-//   { path: 'user', component: UserComponent },
-//   { path: 'login', component: LoginComponent },
-//   { path: 'login/main', redirectTo: 'main', pathMatch: 'full' },
-//   { path: 'main', component: MainMenuComponent }
-// ];
 
 const appRoutes: Routes = [
   {
@@ -50,7 +43,8 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,6 +16,8 @@ COPY userModel.js .
 COPY indexRouter.js .
 COPY userCtrl.js .
 COPY presupuestoCtrl.js .
+COPY passportConfig.js .
+COPY jwtHelper.js .
 COPY dist dist
 
 #RUN ng build --prod

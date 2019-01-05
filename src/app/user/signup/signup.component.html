@@ -1,35 +1,35 @@
  <div>
-  <!-- <img src="/assets/img/users.png" id="icon" alt="User Icon" />  -->
-  <img width="130" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <img width="130" src="/assets/user_add_icon.png" id="icon" alt="User Icon" /> 
+  <!-- <img width="130" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="> -->
 
 </div>
-<!--<form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
-  <input type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name="fullName" placeholder="Nombre Completo"
-    required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
-  <div *ngIf="signUpForm.submitted && !fullName.valid">
+ <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+  <input class="form-control" type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name" placeholder="Nombre Completo"
+    required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !name.valid }">
+  <div *ngIf="signUpForm.submitted && !name.valid">
     <label class="validation-message">This field is required.</label>
   </div>
-  <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="E-mail"
+  <input class="form-control" type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="E-mail"
     required [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
   <div *ngIf="signUpForm.submitted && email.errors">
     <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
     <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
   </div>
-  <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password"
+  <input class="form-control" type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password"
     placeholder="clave" minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
   <div *ngIf="signUpForm.submitted && password.errors">
     <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
     <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
   </div>
-  <input type="submit" value="Registrarse">
-</form>-->
+  <input type="submit" class="btn btn-success col-sm-6" value="Registrarse">
+</form> 
 
-<!-- Success message 
+<!-- Success message -->
 <div class="success" *ngIf="showSucessMessage">
-  Saved successfully
-</div>-->
+  Guardado exitosamente
+</div>
 
-<!-- Error message 
+<!-- Error message -->
 <div class="alert" *ngIf="serverErrorMessages">
   {{serverErrorMessages}}
-</div>-->
+</div>
