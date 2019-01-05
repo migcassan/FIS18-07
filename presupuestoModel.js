@@ -17,13 +17,13 @@ var presupuestoSchema = new mongoose.Schema({
 
 presupuestoSchema.methods.cleanup = function () {
     return {
-        nombre: this.name,
+        nombre: this.nombre,
         categoria: this.categoria,
         cantidad: this.cantidad,
         monto: this.monto
     };
 }
 
-var Presupuesto = mongoose.model('Presupuesto', presupuestoSchema, 'presupuestos');
+var Presupuesto = mongoose.model('presupuesto', presupuestoSchema, 'presupuestos');
 
-module.exports = Presupuesto;
+module.exports = {Presupuesto};
