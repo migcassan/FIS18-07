@@ -27,7 +27,6 @@ export class EditablePresupuestoComponent implements OnInit {
       this.userService.updatePresupuesto(this.oldName, this.presupuestoParam).subscribe(
         res => {
           alert(res);
-          location.reload();
         },
         err => {
           if (err.status === 422) {
@@ -38,15 +37,15 @@ export class EditablePresupuestoComponent implements OnInit {
         }
       );
     }
-
+    setTimeout(() => { location.reload(); }, 2500);
   }
 
   onDelete() {
     this.userService.deletePresupuesto(this.presupuestoParam).subscribe(
       res => {
         alert(res);
-        location.reload();
-     },
+
+      },
       err => {
         if (err.status === 422) {
           console.log(err);
@@ -55,6 +54,7 @@ export class EditablePresupuestoComponent implements OnInit {
           console.log('Algo salió mal. Por favor, póngase en contacto con el administrador.');
       }
     );
+    setTimeout(() => { location.reload(); }, 2500);
   }
 
   ngOnInit() {

@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var presupuestoSchema = new mongoose.Schema({
     name: {
         type: String,
-        required:"El nombre no puede estar vacio!"
+        required: "El nombre no puede estar vacio!",
+        unique: true
     },
     category: {
         type: String
@@ -17,7 +18,7 @@ var presupuestoSchema = new mongoose.Schema({
 });
 
 presupuestoSchema.methods.cleanup = function () {
-    return { 
+    return {
         name: this.name,
         category: this.category,
         quantity: this.quantity,

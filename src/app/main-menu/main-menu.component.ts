@@ -23,7 +23,7 @@ export class MainMenuComponent implements OnInit {
   };
 
   addPrep() {
-    //quitar el espacio blanco al final antes de guardar
+
     this.userService.postPresupuesto(this.newPresupuesto).subscribe(
       res => {
         alert('Entrada procesada correctamente');
@@ -31,12 +31,13 @@ export class MainMenuComponent implements OnInit {
         this.newPresupuesto = {
           name: null,
           category: null,
-          amount: null,
-          quantity: null
+          quantity: null,
+          amount: null
         }
       },
       err => {
         if (err.status === 422) {
+          console.log(err);
           alert('Algo salió mal. Por favor, póngase en contacto con el administrador.');
         }
         else

@@ -1,10 +1,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>nombre</th>
-      <th>categoria</th>
-      <th>cantidad</th>
-      <th>monto</th>
+      <th>Nombre</th>
+      <th>Categoria</th>
+      <th>Cantidad</th>
+      <th>Monto</th>
       <th>&nbsp;</th>
     </tr>
   </thead>
@@ -14,10 +14,10 @@
     <td><input class="form-control" [(ngModel)]="newPresupuesto.category"></td>
     <td><input class="form-control" [(ngModel)]="newPresupuesto.quantity"></td>
     <td><input class="form-control" [(ngModel)]="newPresupuesto.amount"></td>
-    <td><button class="btn btn-primary" (click)="addPrep()">agregar Presupuesto</button> </td>
+    <td><button class="btn btn-primary" (click)="addPrep()">Agregar</button> </td>
     <td><input type="button" class="btn btn-warning" (click)="onLogout()" value="Logout"></td>
   </tr>
 
-  <tr *ngFor="let contact of presupuestoList" app-editable-presupuesto [presupuestoParam]="contact"> </tr>
+  <tr *ngFor="let presupuesto of presupuestoList" app-editable-presupuesto [presupuestoParam]="presupuesto"> </tr>
 
 </table>
