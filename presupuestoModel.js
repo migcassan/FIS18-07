@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var presupuestoSchema = new mongoose.Schema({
     name: {
-        type: String
+        type: String,
+        required:"El nombre no puede estar vacio!"
     },
     category: {
         type: String

@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
 })
 export class MainMenuComponent implements OnInit {
 
+  constructor(private userService: UserService, private router: Router) { }
+
   presupuestoList: presupuesto[];
-  
   selectedContact: presupuesto;
   newPresupuesto: presupuesto = {
     name: null,
@@ -22,19 +23,32 @@ export class MainMenuComponent implements OnInit {
   };
 
   addPrep() {
-    this.presupuestoList.push(this.newPresupuesto);
-    this.newPresupuesto = {
-      name: null,
-      category: null,
-      amount: null,
-      quantity: null
-    }
+    //quitar el espacio blanco al final antes de guardar
+    this.userService.postPresupuesto(this.newPresupuesto).subscribe(
+      res => {
+        alert('Entrada procesada correctamente');
+        this.presupuestoList.push(this.newPresupuesto);
+        this.newPresupuesto = {
+          name: null,
+          category: null,
+          amount: null,
+          quantity: null
+        }
+      },
+      err => {
+        if (err.status === 422) {
+          alert('Algo salió mal. Por favor, póngase en contacto con el administrador.');
+        }
+        else
+          alert(JSON.stringify(err));
+      }
+    );
   }
 
   getbuget() {
     this.userService.getPresupuesto()
       .subscribe((PRESUPUESTOS) => {
-        this.presupuestoList = PRESUPUESTOS;  
+        this.presupuestoList = PRESUPUESTOS;
       });
   }
 
@@ -42,16 +56,6 @@ export class MainMenuComponent implements OnInit {
     this.getbuget();
   }
 
-
-  // presupuestos: presupuestos[];
-  // seletedPresupuesto: presupuestos;
-  // newPresupuesto: presupuestos = {
-  //   name: null,
-  //   category: null,
-  //   amount: null,
-  //   quantity: null
-  // };
-  constructor(private userService: UserService, private router: Router) { }
   onLogout() {
     this.userService.deleteToken();
     this.router.navigateByUrl('/login');

@@ -34,7 +34,19 @@ export class UserService {
     return this.http.get<presupuestos[]>(environment.apiBaseUrl + '/presupuesto');
   }
 
+  postPresupuesto(presupuesto: presupuestos) {
+    return this.http.post(environment.apiBaseUrl + '/presupuesto', presupuesto);
+  }
 
+  updatePresupuesto(name: string, presupuesto: presupuestos) {
+    return this.http.put(environment.apiBaseUrl + '/presupuesto/' + name, presupuesto, this.noAuthHeader);
+  }
+
+  deletePresupuesto(presupuesto: presupuestos) {
+    return this.http.delete(environment.apiBaseUrl + '/presupuesto/' + presupuesto.name);
+  }
+
+  
   //Helper Methods
 
   setToken(token: string) {
