@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-
 const User = mongoose.model('User');
-
 const passport = require('passport');
 
 module.exports.register = (req, res, next) => {

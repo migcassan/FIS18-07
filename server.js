@@ -1,9 +1,11 @@
 require("./db");
 require('./passportConfig');
 
+var Contact = require('./presupuestoModel');
+
 const PRESUPUESTOS_APP_DIR = '/dist/presupuesto';
 const rtsIndex = require('./indexRouter');
-const passport =  require('passport');
+const passport = require('passport');
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -25,7 +27,7 @@ app.use((err, req, res, next) => {
         Object.keys(err.errors).forEach(key => valErrors.push(err.errors[key].message));
         res.status(422).send(valErrors)
     }
-    else{
+    else {
         console.log(err);
     }
 });
@@ -69,6 +71,57 @@ app.post(BASE_API_PATH + "/presupuestos", (req, res) => {
     presupuestos.push(req.body);
     res.sendStatus(201);
     console.log(Date() + " - POST /presupuestos");
+});
+
+app.delete(BASE_API_PATH + "/presupuesto/:name", (req, res) => {
+    // Delete a single presupuesto
+    var name = req.params.name;
+    console.log(Date() + " - DELETE /presupuesto/" + name);
+
+    Contact.deleteMany({ "name": name }, (err, removeResult) => {
+        if (err) {
+            console.error("Error accesing DB");
+            res.sendStatus(500);
+        } else {
+            if (removeResult.n > 1) {
+                console.warn("Incosistent DB: duplicated name");
+            } else if (removeResult.n == 0) {
+                res.sendStatus(404);
+            } else {
+                res.sendStatus(200);
+            }
+        }
+    });
+});
+
+app.put(BASE_API_PATH + "/presupuesto/:name", (req, res) => {
+    // Update presupuesto
+    var name = req.params.name;
+    var updatedContact = req.body;
+    console.log(updatedContact);
+    console.log(Date() + " - PUT /presupuesto/" + name);
+
+    if (name != updatedContact.name) {
+        res.sendStatus(409);
+        return;
+    }
+
+    Contact.replaceOne({ "name": name },
+        updatedContact,
+        (err, updateResult) => {
+            if (err) {
+                console.error("Error accesing DB");
+                res.sendStatus(500);
+            } else {
+                if (updateResult.n > 1) {
+                    console.warn("Incosistent DB: duplicated name");
+                } else if (updateResult.n == 0) {
+                    res.sendStatus(404);
+                } else {
+                    res.sendStatus(200);
+                }
+            }
+        });
 });
 
 module.exports.app = app;

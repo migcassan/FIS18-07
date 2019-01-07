@@ -8,7 +8,7 @@ module.exports.verifyJwtToken = (req, res, next) => {
     if (!token)
         return res.status(403).send({ auth: false, message: ' Token no proporcionado.' });
     else {
-        jwt.verify(token, process.env.JWT_SECRET,
+        jwt.verify(token,"SECRET#123",// process.env.JWT_SECRET,
             (err, decoded) => {
                 if (err)
                     return res.status(500).send({ auth: false, message: 'Falló la autenticación de token.' });

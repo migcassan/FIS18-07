@@ -360,8 +360,7 @@ tr:last-child td:last-child {
   border-bottom-right-radius:3px;
 }
  
-td {
-  background:#FFFFFF;
+td { 
   padding:20px;
   text-align:left;
   vertical-align:middle;

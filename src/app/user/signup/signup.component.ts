@@ -2,24 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { UserService } from '../../shared/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'],
-  providers: [UserService]
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  
+
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   showSucessMessage: boolean;
   serverErrorMessages: string;
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    if (this.userService.isLoggedIn())
+      this.router.navigateByUrl('/main');
   }
-
 
   onSubmit(form: NgForm) {
     this.userService.postUser(form.value).subscribe(

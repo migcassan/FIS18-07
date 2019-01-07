@@ -1,6 +1,5 @@
 FROM node:10.14-stretch-slim
 
-
 WORKDIR /app
 
 COPY package.json .

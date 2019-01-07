@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 import { User } from './user';
+import { Observable } from 'rxjs';
+import { presupuestos } from './presupuestos';
 
 @Injectable({
   providedIn: 'root'
@@ -20,31 +22,31 @@ export class UserService {
 
   //HttpMethods
 
-  postUser(user: User){
-    return this.http.post(environment.apiBaseUrl+'/registerUser',user,this.noAuthHeader);
+  postUser(user: User) {
+    return this.http.post(environment.apiBaseUrl + '/registerUser', user, this.noAuthHeader);
   }
 
   login(authCredentials) {
-    return this.http.post(environment.apiBaseUrl + '/authenticate', authCredentials,this.noAuthHeader);
+    return this.http.post(environment.apiBaseUrl + '/authenticate', authCredentials, this.noAuthHeader);
   }
 
-  getUserProfile() {
-    return this.http.get(environment.apiBaseUrl + '/userProfile');
+  getPresupuesto(): Observable<presupuestos[]> {
+    return this.http.get<presupuestos[]>(environment.apiBaseUrl + '/presupuesto');
   }
 
 
   //Helper Methods
 
   setToken(token: string) {
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('token', token);
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   deleteToken() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
 
   getUserPayload() {
