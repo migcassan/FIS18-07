@@ -9,7 +9,7 @@ mongoose.connect(dbURL, { useCreateIndex: true, useNewUrlParser: true }, (err) =
         console.log("Error in DB Connection: " + JSON.stringify(err, undefined, 2));
     }
 
-});
+}); 
 
 module.exports = mongoose;
 
