@@ -1,10 +1,11 @@
-<table class="table">
+<table class="w3-table-all">
   <thead>
     <tr>
-      <th>Nombre</th>
+      <th>Descripción</th>
       <th>Categoria</th>
       <th>Cantidad</th>
       <th>Monto</th>
+      <th>&nbsp;</th>
       <th>&nbsp;</th>
     </tr>
   </thead>
@@ -17,7 +18,10 @@
     <td><button class="btn btn-primary" (click)="addPrep()">Agregar</button> </td>
     <td><input type="button" class="btn btn-warning" (click)="onLogout()" value="Logout"></td>
   </tr>
+  
+  <tr class="w3-hover-blue" *ngFor="let presupuesto of presupuestoList" app-editable-presupuesto [presupuestoParam]="presupuesto">
+  </tr>
 
-  <tr *ngFor="let presupuesto of presupuestoList" app-editable-presupuesto [presupuestoParam]="presupuesto"> </tr>
-
+  
+  <tr></tr>
 </table>

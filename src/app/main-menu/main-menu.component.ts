@@ -26,7 +26,6 @@ export class MainMenuComponent implements OnInit {
 
     this.userService.postPresupuesto(this.newPresupuesto).subscribe(
       res => {
-        alert('Entrada procesada correctamente');
         this.presupuestoList.push(this.newPresupuesto);
         this.newPresupuesto = {
           name: null,

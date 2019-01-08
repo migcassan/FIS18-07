@@ -36,8 +36,8 @@ export class EditablePresupuestoComponent implements OnInit {
             console.log('Algo salió mal. Por favor, póngase en contacto con el administrador.');
         }
       );
+    setTimeout(() => { location.reload(); }, 1500);
     }
-    setTimeout(() => { location.reload(); }, 2500);
   }
 
   onDelete() {
@@ -54,7 +54,7 @@ export class EditablePresupuestoComponent implements OnInit {
           console.log('Algo salió mal. Por favor, póngase en contacto con el administrador.');
       }
     );
-    setTimeout(() => { location.reload(); }, 2500);
+    setTimeout(() => { location.reload(); }, 1200);
   }
 
   ngOnInit() {
