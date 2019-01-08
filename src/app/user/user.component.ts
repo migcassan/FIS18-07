@@ -11,5 +11,6 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
   }
+  team = 'MC, FA & XL';
 
 }
