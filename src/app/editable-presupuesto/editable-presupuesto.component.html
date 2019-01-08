@@ -1,0 +1,10 @@
+<td *ngIf="!editable">{{presupuestoParam.name}}</td>
+<td *ngIf="!editable">{{presupuestoParam.category}}</td>
+<td *ngIf="!editable">{{presupuestoParam.quantity}}</td>
+<td *ngIf="!editable">{{presupuestoParam.amount}}</td>
+<td *ngIf="editable"><input class="form-control" [(ngModel)]="presupuestoParam.name" /></td>
+<td *ngIf="editable"><input class="form-control" [(ngModel)]="presupuestoParam.category" /></td>
+<td *ngIf="editable"><input class="form-control" [(ngModel)]="presupuestoParam.quantity" /></td>
+<td *ngIf="editable"><input class="form-control" [(ngModel)]="presupuestoParam.amount" /></td> 
+<td><button class="btn btn-info" (click)="onEdit()">{{editable ? 'Guardar': 'Editar'}}</button></td>
+<td><button class="btn btn-danger " (click)="onDelete()">Eliminar</button></td>

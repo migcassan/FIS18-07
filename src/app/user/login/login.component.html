@@ -1,7 +1,7 @@
 <div>
   <img width="130" src="assets/login-user-icon.png" id="icon" alt="User Icon" /> 
  </div>
-<form c #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+<form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
   <input class="form-control" type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="E-mail" [pattern]="emailRegex" required
     [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
   <div *ngIf="signInForm.submitted && email.errors?.pattern">

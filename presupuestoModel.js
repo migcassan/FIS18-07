@@ -1,29 +1,31 @@
 var mongoose = require('mongoose');
 
 var presupuestoSchema = new mongoose.Schema({
-    nombre: {
+    name: {
+        type: String,
+        required: "El nombre no puede estar vacio!",
+        unique: true
+    },
+    category: {
         type: String
     },
-    categoria: {
-        type: String
-    },
-    cantidad: {
+    quantity: {
         type: Number
     },
-    monto: {
+    amount: {
         type: Number
     }
 });
 
 presupuestoSchema.methods.cleanup = function () {
     return {
-        nombre: this.nombre,
-        categoria: this.categoria,
-        cantidad: this.cantidad,
-        monto: this.monto
+        name: this.name,
+        category: this.category,
+        quantity: this.quantity,
+        amount: this.amount
     };
 }
 
 var Presupuesto = mongoose.model('presupuesto', presupuestoSchema, 'presupuestos');
 
-module.exports = {Presupuesto};
+module.exports = Presupuesto;

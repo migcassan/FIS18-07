@@ -3,14 +3,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LoginComponent } from './user/login/login.component';
 import { UserComponent } from './user/user.component';
 import { SignupComponent } from './user/signup/signup.component';
+import { UserService } from './shared/user.service';
 
-// import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './auth.guard';
+import { AuthInterceptor } from './auth.interceptor';
+import { EditablePresupuestoComponent } from './editable-presupuesto/editable-presupuesto.component';
 
 const appRoutes: Routes = [
   {
@@ -22,7 +25,7 @@ const appRoutes: Routes = [
     children: [{ path: '', component: LoginComponent }]
   },
   {
-    path: 'main', component: MainMenuComponent//, canActivate: [AuthGuard]
+    path: 'main', component: MainMenuComponent, canActivate: [AuthGuard]
   },
   {
     path: '', redirectTo: '/login', pathMatch: 'full'
@@ -35,7 +38,8 @@ const appRoutes: Routes = [
     MainMenuComponent,
     LoginComponent,
     UserComponent,
-    SignupComponent
+    SignupComponent,
+    EditablePresupuestoComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,15 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    AuthGuard,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

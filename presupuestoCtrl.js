@@ -1,28 +1,31 @@
 const mongoose = require('mongoose');
-
 const presupuesto = mongoose.model('presupuesto');
 
-
-module.exports.register = (req, res, next) => {
+// Crear, Leer, Actualizar y Borra
+module.exports.crear = (req, res, next) => {
     var prep = new presupuesto();
-    prep.nombre = req.body.nombre;
-    prep.categoria = req.body.categoria;
-    prep.cantidad = req.body.cantidad;
-    prep.monto = req.body.monto;
+
+    prep.name = req.body.name;
+    prep.category = req.body.category;
+    prep.quantity = req.body.quantity;
+    prep.amount = req.body.amount;
     prep.save((err, doc) => {
         if (!err)
             res.send(doc);
         else {
-            if (err.code == 11000)
-                res.status(422).send(['Error guarando record.']);
-            else
+            if (err.code === 11000) {
+                res.status(422).send(['Presupuesto Duplicado']);
+            }
+            else {
                 return next(err);
+            }
         }
+        console.log(Date() + " - POST /presupuestos" + req.body);
     });
 }
 
 
-module.exports.getPresupusto = (req, res, next) =>{
+module.exports.leer = (req, res, next) => {
     presupuesto.find((err, presupuestos) => {
         if (err) {
             console.error("Error mostrando record");
@@ -34,5 +37,3 @@ module.exports.getPresupusto = (req, res, next) =>{
         }
     });
 }
-
-
