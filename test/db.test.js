@@ -24,7 +24,7 @@ describe('Presupuesto DB test Connection', () => {
         });
     });
 
-    it('writes a presupuesto in the DB', (done) => {
+    it('writes a budget in the DB', (done) => {
         var presToInsert = new PresTest({ name: "test", category: "testing", quantity: 1, amount: 5 });
         presToInsert.save((err, presupuesto) => {
             expect(err).is.null;

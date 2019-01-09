@@ -8,12 +8,13 @@ module.exports.register = (req, res, next) => {
     user.email = req.body.email;
     user.password = req.body.password;
     user.save((err, doc) => {
-        if (!err)
-            res.send(doc);
-        else {
+        //successful creation
+        if (!err) {
+            res.status(201).send(doc);
+        } else {  //duplicate mail
             if (err.code === 11000) {
                 res.status(422).send(['Dirección de correo electrónico duplicada encontrada']);
-            }
+            }            //another error
             else {
                 return next(err);
             }

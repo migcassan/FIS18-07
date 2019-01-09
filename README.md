@@ -1,6 +1,6 @@
 # Presupuesto
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
 ## Development server
 
@@ -21,6 +21,14 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Building docker image
+
+Run `docker build --rm -f "Dockerfile" -t presupuesto:latest .` to build the docker image.
+
+## Running image Docker
+
+Run `docker run --rm -it -e DB=mongodb://prueba:prueba3@ds135384.mlab.com:35384/presupuestotest -p 3000:3000/tcp presupuesto:latest` to execute the start-up of the docker container.
 
 ## Further help
 

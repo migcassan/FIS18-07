@@ -10,13 +10,15 @@ module.exports.crear = (req, res, next) => {
     prep.quantity = req.body.quantity;
     prep.amount = req.body.amount;
     prep.save((err, doc) => {
+        //successful creation
         if (!err)
             res.send(doc);
-        else {
+        else { //duplicate budget
             if (err.code === 11000) {
                 res.status(422).send(['Presupuesto Duplicado']);
             }
             else {
+                //another error
                 return next(err);
             }
         }
@@ -44,24 +46,23 @@ module.exports.actualizar = (req, res, next) => {
     console.log(updatedPresupuesto);
     console.log(Date() + " - PUT /presupuesto/" + name);
 
-    presupuesto.replaceOne({ "name": name },
-        updatedPresupuesto,
-        (err, updateResult) => {
-            if (err) {
-                console.error("Error accesing DB");
-                res.sendStatus(500);
-            } else {
-                if (updateResult.n > 1) {
-                    console.warn("Incosistent DB: duplicated name");
-                } else if (updateResult.n == 0) {
-                    console.log(JSON.stringify(updateResult));
+    presupuesto.replaceOne({ "name": name }, updatedPresupuesto, (err, updateResult) => {
 
-                    res.sendStatus(404);
-                } else {
-                    res.sendStatus(200);
-                }
+        if (err) {
+            console.error("Error accesing DB");
+            res.sendStatus(500);
+        } else {
+            if (updateResult.n > 1) {
+                console.warn("Incosistent DB: duplicated name");
+            } else if (updateResult.n == 0) {
+                console.log(JSON.stringify(updateResult));
+                res.sendStatus(404);
+            } else {
+                res.sendStatus(200);
             }
-        });
+        }
+
+    });
 
 };
 

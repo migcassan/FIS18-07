@@ -1,4 +1,3 @@
-require("./db");
 require('./passportConfig');
 const morgan = require('morgan');
 const PRESUPUESTOS_APP_DIR = '/dist/presupuesto';
