@@ -10,7 +10,7 @@ router.post('/authenticate', ctrlUser.authenticate);
 
 router.post('/presupuesto', jwtHelper.verifyJwtToken, ctrlpresupuesto.crear);
 router.get('/presupuesto', jwtHelper.verifyJwtToken, ctrlpresupuesto.leer);
-// router.put('/presupuesto/:name', /* jwtHelper.verifyJwtToken, */ ctrlpresupuesto.actualizar);
-// router.delete('/presupuesto/:name', /* jwtHelper.verifyJwtToken, */ ctrlpresupuesto.borrar);
+router.put('/presupuesto/:name', jwtHelper.verifyJwtToken, ctrlpresupuesto.actualizar);
+router.delete('/presupuesto/:name', jwtHelper.verifyJwtToken, ctrlpresupuesto.borrar);
 
 module.exports = router;

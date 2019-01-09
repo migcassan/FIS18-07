@@ -39,7 +39,7 @@ export class UserService {
   }
 
   updatePresupuesto(name: string, presupuesto: presupuestos) {
-    return this.http.put(environment.apiBaseUrl + '/presupuesto/' + name, presupuesto, this.noAuthHeader);
+    return this.http.put(environment.apiBaseUrl + '/presupuesto/' + name, presupuesto);
   }
 
   deletePresupuesto(presupuesto: presupuestos) {
