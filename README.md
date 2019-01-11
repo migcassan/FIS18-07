@@ -33,3 +33,8 @@ Run `docker run --rm -it -e DB=mongodb://prueba:prueba3@ds135384.mlab.com:35384/
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+requisitos realizados del microservicio avanzado:
+`1) autenticacion con JWT(JSON WEB TOKEN)`
+`2) validacion de formularios en ANGULAR`
+`3) Enrutamiento con Angular Routing`
+`4) Validacion para la integridad de la base de datos`
