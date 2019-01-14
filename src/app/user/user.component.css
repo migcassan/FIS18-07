@@ -2,6 +2,20 @@
 
 /* BASIC */ 
 
+
+.datos { 
+  background: #007bbf;
+  position: fixed !important;    
+  left: 0px;
+  bottom: 0px;
+  right: 0;
+  z-index: 10 !important;
+  color: whitesmoke;
+  margin-left: 0ch;
+  border-radius: 8px 8px 10px 10px;
+  padding: 5px;
+}
+
 html {
   background-color: #56baed;
 }

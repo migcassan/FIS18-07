@@ -1,9 +1,5 @@
-require("./db");
 require('./passportConfig');
 const morgan = require('morgan');
-
-var Presupuesto = require('./presupuestoModel');
-
 const PRESUPUESTOS_APP_DIR = '/dist/presupuesto';
 const rtsIndex = require('./indexRouter');
 const passport = require('passport');
@@ -56,57 +52,6 @@ app.get("/main", (req, res) => {
     res.sendFile(path.join(__dirname, PRESUPUESTOS_APP_DIR, '/index.html'));
     console.log(path.join(__dirname, PRESUPUESTOS_APP_DIR, '/index.html'));
     console.log(Date() + " - GET /main");
-});
-
-app.delete(BASE_API_PATH + "/presupuesto/:name", (req, res) => {
-    // Delete a single presupuesto
-    var name = req.params.name;
-    console.log(Date() + " - DELETE /presupuesto/" + name);
-
-    Presupuesto.deleteMany({ "name": name }, (err, removeResult) => {
-        if (err) {
-            console.error("Error accesing DB");
-            res.sendStatus(500);
-        } else {
-            if (removeResult.n > 1) {
-                console.warn("Incosistent DB: duplicated name");
-            } else if (removeResult.n == 0) {
-                res.sendStatus(404);
-            } else {
-                res.sendStatus(200);
-            }
-        }
-    });
-});
-
-app.put(BASE_API_PATH + "/presupuesto/:name", (req, res) => {
-    // Update presupuesto
-    var name = req.params.name;
-    var updatedPresupuesto = req.body;
-    console.log(updatedPresupuesto); 
-    console.log(Date() + " - PUT /presupuesto/" + name);
-
-    // if (name != updatedPresupuesto.name) {
-    //     res.sendStatus(409);
-    //     return;
-    // }
-
-    Presupuesto.replaceOne({ "name": name },
-        updatedPresupuesto,
-        (err, updateResult) => {
-            if (err) {
-                console.error("Error accesing DB");
-                res.sendStatus(500);
-            } else {
-                if (updateResult.n > 1) {
-                    console.warn("Incosistent DB: duplicated name");
-                } else if (updateResult.n == 0) {
-                    res.sendStatus(404);
-                } else {
-                    res.sendStatus(200);
-                }
-            }
-        });
 });
 
 module.exports.app = app;

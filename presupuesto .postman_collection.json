@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "21db4fd8-6254-48ce-bf11-db39fdcb4b48",
+		"name": "presupuesto ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST /usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"admin\",\"email\":\"test@gmail.com\", \"password\":\"1123\"}"
+				},
+				"url": {
+					"raw": "https://fis2018-07.herokuapp.com/api/v1/registerUser",
+					"protocol": "https",
+					"host": [
+						"fis2018-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"registerUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@gmail.com\", \"password\":\"1123\"}"
+				},
+				"url": {
+					"raw": "https://fis2018-07.herokuapp.com/api/v1/authenticate",
+					"protocol": "https",
+					"host": [
+						"fis2018-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /presupuesto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzM1OGU5MzIzZGNiMjAwMTJjZjMxY2YiLCJpYXQiOjE1NDcwMTM3ODgsImV4cCI6MTU0NzAyMjc4OH0.esZySw-3Fcx4OZSJ5U2n_B0eJvBz2_0jwB0J5j7yc3g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n  \"name\":\"comida con miguel y familia\",\r\n \t\"category\": \"almuerzo\",\r\n \t\"quantity\": 4,\r\n \t\"amount\": 2000\r\n } "
+				},
+				"url": {
+					"raw": "https://fis2018-07.herokuapp.com/api/v1/presupuesto",
+					"protocol": "https",
+					"host": [
+						"fis2018-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"presupuesto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /presupuesto",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzM1OGU5MzIzZGNiMjAwMTJjZjMxY2YiLCJpYXQiOjE1NDcwMTM3ODgsImV4cCI6MTU0NzAyMjc4OH0.esZySw-3Fcx4OZSJ5U2n_B0eJvBz2_0jwB0J5j7yc3g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://fis2018-07.herokuapp.com/api/v1/presupuesto",
+					"protocol": "https",
+					"host": [
+						"fis2018-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"presupuesto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /presupuesto",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzM1OGU5MzIzZGNiMjAwMTJjZjMxY2YiLCJpYXQiOjE1NDcwMTM3ODgsImV4cCI6MTU0NzAyMjc4OH0.esZySw-3Fcx4OZSJ5U2n_B0eJvBz2_0jwB0J5j7yc3g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n  \"name\":\"comidamiguel y familia\",\r\n \t\"category\": \"almurzo\",\r\n \t\"quantity\": 4,\r\n \t\"amount\": 2000\r\n }"
+				},
+				"url": {
+					"raw": "https://fis2018-07.herokuapp.com/api/v1/presupuesto/comida con miguel y familia",
+					"protocol": "https",
+					"host": [
+						"fis2018-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"presupuesto",
+						"comida con miguel y familia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /presupuesto",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzM1OGU5MzIzZGNiMjAwMTJjZjMxY2YiLCJpYXQiOjE1NDcwMTM3ODgsImV4cCI6MTU0NzAyMjc4OH0.esZySw-3Fcx4OZSJ5U2n_B0eJvBz2_0jwB0J5j7yc3g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://fis2018-07.herokuapp.com/api/v1/presupuesto/comidamiguel y familia",
+					"protocol": "https",
+					"host": [
+						"fis2018-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"presupuesto",
+						"comidamiguel y familia"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
